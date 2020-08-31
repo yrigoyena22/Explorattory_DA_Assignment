@@ -19,6 +19,8 @@ voltage <- as.numeric(datatimeframe$Voltage)
 subMetering1 <- as.numeric(datatimeframe$Sub_metering_1)
 subMetering2 <- as.numeric(datatimeframe$Sub_metering_2)
 subMetering3 <- as.numeric(datatimeframe$Sub_metering_3)
+datetime <- strptime(paste(datatimeframe$Date, datatimeframe$Time, sep=" "), 
+                     "%d/%m/%Y %H:%M:%S") 
 
 plot(datetime, subMetering1, type="l", ylab="Energy Submetering", xlab="")
 lines(datetime, subMetering2, type="l", col="red")
