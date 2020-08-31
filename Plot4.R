@@ -19,6 +19,8 @@ voltage <- as.numeric(datatimeframe$Voltage)
 subMetering1 <- as.numeric(datatimeframe$Sub_metering_1)
 subMetering2 <- as.numeric(datatimeframe$Sub_metering_2)
 subMetering3 <- as.numeric(datatimeframe$Sub_metering_3)
+datetime <- strptime(paste(datatimeframe$Date, datatimeframe$Time, sep=" "), 
+                     "%d/%m/%Y %H:%M:%S") 
 
 par(mfrow = c(2, 2)) 
 # First plot
@@ -31,7 +33,7 @@ plot(datetime, subMetering1, type="l", ylab="Energy Submetering", xlab="")
 lines(datetime, subMetering2, type="l", col="red")
 lines(datetime, subMetering3, type="l", col="blue")
 legend("topright", c("Sub_metering_1", "Sub_metering_2", "Sub_metering_3"), 
-       lty=0.05, lwd=0.05, col=c("black", "red", "blue"))
+       lty=, lwd=0.5, col=c("black", "red", "blue"))
 
 # Fourth plot
 plot(datetime, globalReactivePower, type="l", xlab="datetime", ylab="Global_reactive_power", cex=0.2)
